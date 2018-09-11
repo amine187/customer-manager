@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="page-title-box">
+      <div class="btn-group pull-right">
+        <ol class="breadcrumb hide-phone p-0 m-0">
+          <li class="breadcrumb-item"><a href="/">Webtrekk</a></li>
+          <li *ngFor="let breadcrumb of breadcrumbs" class="breadcrumb-item" [ngClass]="{'active':breadcrumb.active}">
+            <a *ngIf="!breadcrumb.active;else noLink" [href]="breadcrumb.url">
+              {{ breadcrumb.label}}
+            </a>
+            <ng-template #noLink>{{ breadcrumb.label}}</ng-template>
+          </li>
+        </ol>
+      </div>
+      <h4 class="page-title">Customers</h4>
+    </div>
+  </div>
+</div>
