@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "concurrently \"ng serve --host=0.0.0.0 --proxy-config config/proxy.js\" \"node server.js\"",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -20,7 +20,11 @@
     "@angular/platform-browser": "^6.1.0",
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
     "core-js": "^2.5.4",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.14",
     "rxjs": "~6.2.0",
     "zone.js": "~0.8.26"
   },
