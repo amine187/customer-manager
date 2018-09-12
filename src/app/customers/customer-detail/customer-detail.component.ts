@@ -110,8 +110,8 @@ export class CustomerDetailComponent implements OnInit {
       firstName: new FormControl(null, Validators.required),
       lastName: new FormControl(null, Validators.required),
       birthDate: new FormControl(null, Validators.required),
-      lastContact: new FormControl(),
-      gender: new FormControl('m'),
+      lastContact: new FormControl(null, Validators.required),
+      gender: new FormControl('m', Validators.required),
       customerLifetimeValue: new FormControl(0, Validators.min(0)),
     });
   }

@@ -25,6 +25,7 @@ var customerSchema = new Schema({
     lastContact: {
         type: Date,
         index: true,
+        required: true,
     },
     customerLifetimeValue: {
         type: Number,

@@ -50,10 +50,13 @@
           </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="dateLastContact" class="col-form-label">Last Contact</label>
+          <div class="form-group col-md-6" [ngClass]="{'has-danger':customerForm.controls.lastContact.invalid && customerForm.controls.lastContact.dirty}">
+            <label for="dateLastContact" class="col-form-label">Last Contact<span class="text-danger">*</span></label>
             <input type="datetime-local" formControlName="lastContact" class="form-control" id="dateLastContact" name="lastContact"
               placeholder="Last Contact">
+            <ul *ngIf="customerForm.controls.lastContact.invalid && customerForm.controls.lastContact.dirty" class="parsley-errors-list filled">
+              <li class="parsley-required">Last Contact required.</li>
+            </ul>
           </div>
           <div class="form-group col-md-6" [ngClass]="{'has-danger':customerForm.controls.customerLifetimeValue.invalid && customerForm.controls.customerLifetimeValue.dirty}">
             <label for="numberCLV" class="col-form-label">CLV</label>
