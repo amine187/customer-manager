@@ -1,11 +1,11 @@
-sudo: false
+
 dist: trusty
+sudo: false
+
 language: node_js
-
-cache:
-  directories:
-    - node_modules
-
+node_js:
+  - "8"
+  
 addons:
   apt:
     sources:
@@ -13,16 +13,13 @@ addons:
     packages:
       - google-chrome-stable
 
-services: mongodb
+cache:
+  directories:
+     - ./node_modules
 
-node_js:
-  - "8"
-
-matrix:
-  fast_finish: true
-
-before_script:
+install:
   - npm install
 
 script:
-  - npm run test:ui
+  - export CHROME_BIN=chromium-browser
+  - xvfb-run -a npm run test --  --no-progress --browser=ChromeNoSandbox
