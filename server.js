@@ -50,7 +50,7 @@ mongoose.connect(databaseUrl, { useNewUrlParser: true }).then(
 /**
  * Server listen.
  */
-const server = app.listen(port, () => {
+const server = app.listen( process.env.PORT || port, () => {
     console.info("Application connected on port " + port);
 });
 
