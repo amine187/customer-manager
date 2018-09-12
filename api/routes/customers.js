@@ -34,10 +34,8 @@ router.post('/', (req, res) => {
         lastContact: new Date(req.body.lastContact),
         customerLifetimeValue: req.body.customerLifetimeValue,
     });
-    console.log('newCustomer',newCustomer)
-
+    
     newCustomer.save((err, customer) => {
-        console.log('customer',err)
         if (err) return res.status(500).send("There was a problem adding the information to the database.");
         res.status(201).send(customer);
     });
