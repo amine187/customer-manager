@@ -1,0 +1,168 @@
+<div class="card-box">
+  <div class="row">
+    <div class="col-sm-9">
+      <button class="btn btn-default btn-md waves-effect waves-light m-b-30" (click)="lgModal.show()">
+        <i class="fa fa-plus"></i>
+        Add Customer
+      </button>
+      <button class="btn btn-default btn-md waves-effect waves-light m-b-30 m-l-5" (click)="displayCustomers()">
+        <i class="fa fa-refresh"></i>
+      </button>
+    </div>
+    <div class="col-sm-3">
+      <form role="form">
+        <div class="form-group contact-search">
+          <input type="text" id="search" class="form-control" [(ngModel)]="searchString" name="searchString"
+            placeholder="Search...">
+          <button type="submit" class="btn btn-white"><i class="fa fa-search"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row" *ngIf="dataLoader">
+    <app-loader class="col-xl-12 text-center m-t-10 m-b-10"></app-loader>
+  </div>
+  <div class="card-box" *ngIf="!dataLoader && customers.length==0">
+    <div class="row text-center">
+      <div class="col-xl-12 text-center">
+        <h5>No customer stored in the database</h5>
+      </div>
+    </div>
+  </div>
+  <div class="table-responsive" *ngIf="!dataLoader && customers.length>0">
+    <table class="table table-hover mails m-0 table table-actions-bar" [mfData]="customers" #mf="mfDataTable"
+      [mfRowsOnPage]="5">
+      <thead>
+        <tr>
+          <th>
+            <mfDefaultSorter by="firstName">Name</mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="gender">Gender</mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter>Birth Date</mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter class="text-center">Customer Lifetime Value</mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter>Last Contact</mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter>Action</mfDefaultSorter>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of mf.data | filter : 'firstName' : searchString">
+          <td class="text-capitalize">{{customer.firstName}} {{customer.lastName}}</td>
+          <td>
+            <span class="badge" [ngClass]="{'badge-info':customer.gender=='m','badge-pink':customer.gender=='w'}">
+              <i class="fa fa-lg" [ngClass]="{'fa-mars':customer.gender=='m','fa-venus':customer.gender=='w'}"></i>
+            </span>
+          </td>
+          <td>{{customer.birthDate | date:'mediumDate'}}</td>
+          <td><b>{{customer.customerLifetimeValue ? customer.customerLifetimeValue : 0}}€</b></td>
+          <td>{{customer.lastContact | date:'short'}}</td>
+          <td>
+            <a [routerLink]="[customer._id]" class="table-action-btn" tooltip="Edit" placement="top">
+              <i class="fa fa-pencil"></i>
+            </a>
+            <a class="table-action-btn" (click)="openModal(customer)" tooltip="Delete" placement="top">
+              <i class="fa fa-close"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="6">
+            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+<!-- begin Create Customer modal -->
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-sizes-name1" class="modal-title pull-left">Create New Customer</h4>
+        <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <form [formGroup]="customerForm" (ngSubmit)="createCustomer()">
+              <div class="form-row">
+                <div class="form-group col-md-6" [ngClass]="{'has-danger':customerForm.controls.firstName.invalid && customerForm.controls.firstName.dirty}">
+                  <label for="inputFirstName" class="col-form-label">First Name<span class="text-danger">*</span></label>
+                  <input type="text" formControlName="firstName" class="form-control" id="inputFirstName" name="firstName"
+                    placeholder="Customer First Name" [ngClass]="{'parsley-error':customerForm.controls.firstName.invalid && customerForm.controls.firstName.dirty}">
+                  <ul *ngIf="customerForm.controls.firstName.invalid && customerForm.controls.firstName.dirty" class="parsley-errors-list filled">
+                    <li class="parsley-required">Fist Name is required.</li>
+                  </ul>
+                </div>
+                <div class="form-group col-md-6" [ngClass]="{'has-danger':customerForm.controls.lastName.invalid && customerForm.controls.lastName.dirty}">
+                  <label for="inputLastName" class="col-form-label">Last Name<span class="text-danger">*</span></label>
+                  <input type="text" formControlName="lastName" class="form-control" id="inputLastName" name="lastName"
+                    placeholder="Customer Last Name" [ngClass]="{'parsley-error':customerForm.controls.lastName.invalid && customerForm.controls.lastName.dirty}">
+                  <ul *ngIf="customerForm.controls.lastName.invalid && customerForm.controls.lastName.dirty" class="parsley-errors-list filled">
+                    <li class="parsley-required">Last Name is required.</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6" [ngClass]="{'has-danger':customerForm.controls.birthDate.invalid && customerForm.controls.birthDate.dirty}">
+                  <label for="dateBirthDate" class="col-form-label">Birth Date<span class="text-danger">*</span></label>
+                  <input type="date" formControlName="birthDate" class="form-control" id="dateBirthDate" name="birthDate"
+                    pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" [ngClass]="{'parsley-error':customerForm.controls.birthDate.invalid && customerForm.controls.birthDate.dirty}">
+                  <ul *ngIf="customerForm.controls.birthDate.invalid && customerForm.controls.birthDate.dirty" class="parsley-errors-list filled">
+                    <li class="parsley-required">Birth Date is required.</li>
+                  </ul>
+                </div>
+                <div class="form-group col-md-6" [ngClass]="{'has-danger':customerForm.controls.gender.invalid && customerForm.controls.gender.dirty}">
+                  <label for="selectGender" class="col-form-label">Gender<span class="text-danger">*</span></label>
+                  <select name="gender" id="selectGender" formControlName="gender" class="form-control">
+                    <option value="m">Man</option>
+                    <option value="w">Woman</option>
+                  </select>
+                  <ul *ngIf="customerForm.controls.gender.invalid && customerForm.controls.gender.dirty" class="parsley-errors-list filled">
+                    <li class="parsley-required">Gender is required.</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="dateLastContact" class="col-form-label">Last Contact</label>
+                  <input type="datetime-local" formControlName="lastContact" class="form-control" id="dateLastContact"
+                    name="lastContact" placeholder="Last Contact">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="numberCLV" class="col-form-label">CLV</label>
+                  <div class="input-group mb-2">
+                    <input type="number" class="form-control" id="numberCLV" formControlName="customerLifetimeValue"
+                      placeholder="Customer Lifetime Value">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">€</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-white" (click)="lgModal.hide()">Cancel</button>
+        <button type="button" class="btn btn-default" (click)="createCustomer()" [disabled]=customerForm.invalid>Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end Create Customer modal -->
