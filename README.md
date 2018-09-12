@@ -19,5 +19,5 @@ Run `npm run test:ui` to execute the unit tests of frontend side via [Karma](htt
 This application deployed by [Heroku](https://heroku.com), so you can manage your customer following this [Link](https://webtrekk-customer-app.herokuapp.com)
 
 
-[](application.gif)
+![](application.gif)
 
