@@ -49,7 +49,6 @@ export class CustomerDetailComponent implements OnInit {
       }
     });
   }
-
   /**
    * Edit Customer
    */
@@ -70,7 +69,6 @@ export class CustomerDetailComponent implements OnInit {
       );
     });
   }
-
   /**
    * Delete customer
    */
@@ -85,7 +83,6 @@ export class CustomerDetailComponent implements OnInit {
       );
     });
   }
-
   /**
    * Open confirmation modal when click on delete button
    */
@@ -105,7 +102,6 @@ export class CustomerDetailComponent implements OnInit {
       }
     });
   }
-
   /**
    * Build Edit form
    */
@@ -116,7 +112,7 @@ export class CustomerDetailComponent implements OnInit {
       birthDate: new FormControl(null, Validators.required),
       lastContact: new FormControl(),
       gender: new FormControl('m'),
-      customerLifetimeValue: new FormControl(0),
+      customerLifetimeValue: new FormControl(0, Validators.min(0)),
     });
   }
 
