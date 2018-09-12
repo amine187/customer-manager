@@ -32,8 +32,8 @@ router.post('/', (req, res) => {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         gender: req.body.gender,
-        birthDate: new Date(req.body.birthDate).toISOString().substring(0,10),
-        lastContact: new Date(req.body.lastContact).toISOString().substring(0,16),
+        birthDate: new Date(req.body.birthDate),
+        lastContact: new Date(req.body.lastContact),
         customerLifetimeValue: req.body.customerLifetimeValue,
     });
     

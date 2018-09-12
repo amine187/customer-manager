@@ -5,14 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ToastrModule } from 'ngx-toastr';
 
+import { ModalComponent } from './shared/modal/modal.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
-
-import { AppComponent } from './app.component';
-import { ModalComponent } from './shared/modal/modal.component';
-import { AppRoutingModule } from './app-routing.module';
 import { CustomersModule } from './customers/customers.module';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
