@@ -13,7 +13,6 @@ router.get('/:id', (req, res) => {
         res.status(200).send(customer);
     });
 });
-
 /**
  * Get all customers
  */
@@ -23,7 +22,6 @@ router.get('/', (req, res) => {
         res.status(200).send(customers);
     });
 });
-
 /**
  * Create a new customer
  */
@@ -42,7 +40,6 @@ router.post('/', (req, res) => {
         res.status(201).send(customer);
     });
 });
-
 /**
  * Update a customer by id
  */
@@ -52,7 +49,6 @@ router.put('/:id', (req, res) => {
         res.status(200).send(customer);
     });
 });
-
 /**
  * Delete a customer by id
  */
@@ -62,6 +58,5 @@ router.delete('/:id', (req, res) => {
         res.status(200).send(customer);
     });
 });
-
 
 module.exports = router;
