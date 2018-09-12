@@ -12,11 +12,12 @@ Run `npm run build` to build the project.
 
 ## Running unit tests
 
-Run `npm run test:ui` to execute the unit tests of frontend side via [Karma](https://karma-runner.github.io).
-Run `npm run test:api` to execute the unit tests for the node REST API via [Mocha](https://mochajs.org).
+Run `npm run test:ui` to execute the unit tests of frontend side via [Karma](https://karma-runner.github.io). Run `npm run test:api` to execute the unit tests for the node REST API via [Mocha](https://mochajs.org).
 
 ## Deployment application
 
 This application deployed by [Heroku](https://heroku.com), so you can manage your customer following this [Link](https://webtrekk-customer-app.herokuapp.com)
 
+
+[](application.gif)
 

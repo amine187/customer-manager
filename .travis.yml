@@ -25,4 +25,4 @@ before_script:
   - npm install
 
 script:
-  - npm run test:api
+  - npm run test:ui
