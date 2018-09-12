@@ -15,12 +15,16 @@ const customersRouters = require('./api/routes/customers');
  */
 const config = require('./config/default');
 const port = config.nodeServer.port;
-const databaseUrl = config.database.url;
 const buildPath = path.join(__dirname, 'dist');
 const router = express.Router();
 const app = express();
 const db = mongoose.connection;
+let databaseUrl = config.database.url.prod;
 
+// change database url for testing mode
+if (process.env.NODE_ENV == 'test') {
+    databaseUrl = config.database.url.test;
+}
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -50,7 +54,7 @@ mongoose.connect(databaseUrl, { useNewUrlParser: true }).then(
 /**
  * Server listen.
  */
-const server = app.listen( process.env.PORT || port, () => {
+const server = app.listen(process.env.PORT || port, () => {
     console.info("Application connected on port " + port);
 });
 
