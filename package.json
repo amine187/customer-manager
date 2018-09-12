@@ -4,7 +4,6 @@
   "scripts": {
     "ng": "ng",
     "start":"node server.js",
-    "start:dev": "concurrently \"ng serve --host=0.0.0.0 --proxy-config config/proxy.js\" \"node server.js\"",
     "build": "ng build --aot --prod",
     "test:ui": "ng test",
     "test:api": "mocha  --timeout 10000 -- ./api/test/customer.js",
