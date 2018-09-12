@@ -56,6 +56,8 @@ describe('Customers', () => {
                 lastName: "Rhouma",
                 gender: "m",
                 birthDate: "1989-10-10",
+                customerLifetimeValue: 50.99,
+                lastContact: "2017-07-08T13:18:56.888Z"
             }
             chai.request(server)
                 .post('/api/v1/customers')

@@ -4,15 +4,15 @@
   "scripts": {
     "ng": "ng",
     "start": "concurrently \"ng serve --host=0.0.0.0 --proxy-config config/proxy.js\" \"node server.js\"",
-    "build": "ng build",
+    "build": "ng build --aot --prod",
     "test:ui": "ng test",
-    "test:api": "mocha --timeout 10000",
+    "test:api": "mocha  --timeout 10000 -- ./api/test/customer.js",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^6.1.0",
+    "@angular/animations": "^6.1.7",
     "@angular/common": "^6.1.0",
     "@angular/compiler": "^6.1.0",
     "@angular/core": "^6.1.0",
@@ -34,6 +34,7 @@
     "ngx-bootstrap": "^3.0.1",
     "ngx-toastr": "^9.0.2",
     "rxjs": "~6.2.0",
+    "winston": "^3.1.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
@@ -44,15 +45,18 @@
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
+    "chai": "^4.1.2",
+    "chai-http": "^4.2.0",
     "codelyzer": "~4.3.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~3.0.0",
     "karma-chrome-launcher": "~2.2.0",
-    "karma-coverage-istanbul-reporter": "~2.0.1",
+    "karma-coverage-istanbul-reporter": "^2.0.4",
     "karma-jasmine": "~1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "protractor": "~5.4.0",
+    "mocha": "^5.2.0",
+    "protractor": "^5.4.1",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
     "typescript": "~2.9.2"

@@ -22,6 +22,7 @@ export class CustomersListComponent implements OnInit {
   toastrConfig: Toastr;
   customerForm: FormGroup;
   dataLoader: boolean;
+  searchString: string;
 
   @ViewChild('lgModal')
   lgModal: ModalDirective;

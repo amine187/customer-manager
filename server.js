@@ -117,3 +117,5 @@ function onDBError(error) {
 function onDBListening() {
     console.log("Connected correctly to server");
 }
+
+module.exports = app;
