@@ -14,5 +14,13 @@ Run `npm run build` to build the project. The build artifacts will be stored in 
 
 Run `npm run test:ui` to execute the unit tests of frontend side via [Karma](https://karma-runner.github.io).
 Run `npm run test:api` to execute the unit tests for the node REST API via [Mocha](https://mochajs.org).
+<<<<<<< HEAD
+=======
+
+## Application deployment
+
+This application deployed with [Heroku](https://www.heroku.com), so you can manage your customers by this (Link)[] 
+
+>>>>>>> 27dca96b7fdb60b6b24b0c6f44306fbe97f08750
 
 
