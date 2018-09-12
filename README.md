@@ -17,6 +17,6 @@ Run `npm run test:api` to execute the unit tests for the node REST API via [Moch
 
 ## Deployment application
 
-This application deployed by (Heroku)[https://heroku.com], so you can manage your customer by clicking on this (Link)[https://webtrekk-customer-app.herokuapp.com]
+This application deployed by [Heroku](https://heroku.com), so you can manage your customer by clicking on this [Link](https://webtrekk-customer-app.herokuapp.com)
 
 
