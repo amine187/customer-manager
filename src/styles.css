@@ -2,6 +2,14 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~font-awesome/css/font-awesome.css";
 @import '~line-awesome/css/line-awesome.min.css';
+@import '~ngx-toastr/toastr.css';
+
+/*
+Template Name: UBold Dashboard
+Author: Coderthemes
+Email: coderthemes@gmail.com
+File: Main Css
+*/
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans:400,700|Source+Sans+Pro:400,600,700");
 /* =============
    Common
@@ -7588,3 +7596,24 @@ div.hopscotch-bubble .hopscotch-bubble-arrow-container.down .hopscotch-bubble-ar
   }
 }
 /*# sourceMappingURL=style.css.map */
+/* =============
+   Toastr
+============= */
+.toast-success {
+  background-color: #81c868 ;
+}
+.toast-error {
+  background-color: #f05050;
+}
+.toast-info {
+  background-color: #5d9cec;
+}
+.toast-warning {
+  background-color: #ffbd4a;
+}
+/* =============
+   Angular-6-datatable
+============= */
+mfpaginator> ul:first-child{
+  float:left !important
+}

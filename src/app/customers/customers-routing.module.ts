@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
 import { CustomersListComponent } from './customers-list/customers-list.component';
 import { CustomersResolver } from './customers-resolver.service';
 
@@ -19,6 +20,16 @@ const routes: Routes = [
                     breadcrumb: ''
                 },
             },
+            {
+                path: ':id',
+                component: CustomerDetailComponent,
+                data: {
+                    breadcrumb: ':id'
+                },
+                resolve: {
+                    customer: CustomersResolver
+                }
+            }
         ]
     }
 ];

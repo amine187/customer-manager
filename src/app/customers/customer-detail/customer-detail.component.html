@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card-box">
+      <h5 class="header-title text-capitalize m-t-0">Edit Customer
+        <span class="text-primary">{{customerFullName}}</span>
+        <button type="button" class="close" (click)="openModal()" aria-label="Close" tooltip="Delete it" placement="top">
+          <span aria-hidden="true"><i class="fa fa-close"></i></span>
+        </button>
+      </h5>
+      <p class="text-muted font-14 m-b-20">
+        Update customer information.
+      </p>
+      <form [formGroup]="customerForm" (ngSubmit)="editCustomer()">
+        <div class="form-row">
+          <div class="form-group col-md-6" [ngClass]="{'has-danger':customerForm.controls.firstName.invalid && customerForm.controls.firstName.dirty}">
+            <label for="inputFirstName" class="col-form-label">First Name<span class="text-danger">*</span></label>
+            <input type="text" formControlName="firstName" class="form-control" id="inputFirstName" name="firstName"
+              placeholder="Customer First Name" [ngClass]="{'parsley-error':customerForm.controls.firstName.invalid && customerForm.controls.firstName.dirty}">
+            <ul *ngIf="customerForm.controls.firstName.invalid && customerForm.controls.firstName.dirty" class="parsley-errors-list filled">
+              <li class="parsley-required">Fist Name is required.</li>
+            </ul>
+          </div>
+          <div class="form-group col-md-6" [ngClass]="{'has-danger':customerForm.controls.lastName.invalid && customerForm.controls.lastName.dirty}">
+            <label for="inputLastName" class="col-form-label">Last Name<span class="text-danger">*</span></label>
+            <input type="text" formControlName="lastName" class="form-control" id="inputLastName" name="lastName"
+              placeholder="Customer Last Name" [ngClass]="{'parsley-error':customerForm.controls.lastName.invalid && customerForm.controls.lastName.dirty}">
+            <ul *ngIf="customerForm.controls.lastName.invalid && customerForm.controls.lastName.dirty" class="parsley-errors-list filled">
+              <li class="parsley-required">Last Name is required.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6" [ngClass]="{'has-danger':customerForm.controls.birthDate.invalid && customerForm.controls.birthDate.dirty}">
+            <label for="dateBirthDate" class="col-form-label">Birth Date<span class="text-danger">*</span></label>
+            <input type="date" formControlName="birthDate" class="form-control" id="dateBirthDate" name="birthDate"
+              pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" [ngClass]="{'parsley-error':customerForm.controls.birthDate.invalid && customerForm.controls.birthDate.dirty}">
+            <ul *ngIf="customerForm.controls.birthDate.invalid && customerForm.controls.birthDate.dirty" class="parsley-errors-list filled">
+              <li class="parsley-required">Birth Date is required.</li>
+            </ul>
+          </div>
+          <div class="form-group col-md-6" [ngClass]="{'has-danger':customerForm.controls.gender.invalid && customerForm.controls.gender.dirty}">
+            <label for="selectGender" class="col-form-label">Gender<span class="text-danger">*</span></label>
+            <select name="gender" id="selectGender" formControlName="gender" class="form-control">
+              <option value="m">Man</option>
+              <option value="w">Woman</option>
+            </select>
+            <ul *ngIf="customerForm.controls.gender.invalid && customerForm.controls.gender.dirty" class="parsley-errors-list filled">
+              <li class="parsley-required">Gender is required.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="dateLastContact" class="col-form-label">Last Contact</label>
+            <input type="datetime-local" formControlName="lastContact" class="form-control" id="dateLastContact" name="lastContact"
+              placeholder="Last Contact">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="numberCLV" class="col-form-label">CLV</label>
+            <div class="input-group mb-2">
+              <input type="number" class="form-control" id="numberCLV" formControlName="customerLifetimeValue"
+                placeholder="Customer Lifetime Value">
+              <div class="input-group-prepend">
+                <div class="input-group-text">€</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6 m-b-0">
+            <a [routerLink]="['/customers']" class="btn btn-default waves-effect">
+              <i class="fa fa-arrow-left"></i> Back to Customers List
+            </a>
+          </div>
+          <div class="form-group col-md-6 text-right m-b-0">
+            <button class="btn btn-primary waves-effect waves-light" [disabled]="customerForm.invalid" type="submit">
+              Edit
+            </button>
+            <button type="reset" class="btn btn-white waves-effect m-l-5">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </form>
+    </div> <!-- end card-box -->
+  </div>
+</div>
