@@ -4,11 +4,15 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm run start:dev` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Build
 
 Run `npm run build` to build the project. 
+
+## Production server
+
+After build the project you can un `npm run start` for a prod server. Navigate to `http://localhost:3000/`.
 
 ## Running unit tests
 
