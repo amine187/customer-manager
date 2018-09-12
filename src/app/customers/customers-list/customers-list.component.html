@@ -138,7 +138,7 @@
                 </div>
               </div>
               <div class="form-row">
-                <div class="form-group col-md-6"  [ngClass]="{'has-danger':customerForm.controls.lastContact.invalid && customerForm.controls.lastContact.dirty}">
+                <div class="form-group col-md-6" [ngClass]="{'has-danger':customerForm.controls.lastContact.invalid && customerForm.controls.lastContact.dirty}">
                   <label for="dateLastContact" class="col-form-label">Last Contact<span class="text-danger">*</span></label>
                   <input type="datetime-local" formControlName="lastContact" class="form-control" id="dateLastContact"
                     name="lastContact" placeholder="Last Contact">
