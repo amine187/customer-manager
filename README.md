@@ -14,11 +14,12 @@ Run `npm run build` to build the project.
 
 ## Production server
 
-After build the project you can un `npm run start` for a prod server. Navigate to `http://localhost:3000/`.
+After build the project you can run `npm run start` for a prod server. Navigate to `http://localhost:3000/`.
 
 ## Running unit tests
 
 Run `npm run test:ui` to execute the unit tests of frontend side via [Karma](https://karma-runner.github.io). 
+
 Run `npm run test:api` to execute the unit tests for the node REST API via [Mocha](https://mochajs.org).
 
 ## Deployment application

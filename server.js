@@ -9,6 +9,7 @@ const debug = require('debug')('server:server');
  * Server Routers
  */
 const customersRouters = require('./api/routes/customers');
+const customersRoutersV2 = require('./api/routes/customers.v2');
 
 /**
  * Server Configuration & Middlewares
@@ -42,6 +43,7 @@ router.get('*', (req, res, next) => {
  */
 app.use('/', router);
 app.use('/api/v1/customers', customersRouters);
+app.use('/api/v2/customers', customersRoutersV2);
 
 /**
  * Database Connection.
