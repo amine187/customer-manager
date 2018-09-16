@@ -79,11 +79,12 @@ describe('Customers', () => {
      */
     describe('/GET/:id customer', () => {
         it('it should GET a customer by the given id', (done) => {
-            const customer = new Customer({
+            var customer = new Customer({
                 firstName: "Amine",
                 lastName: "Rhouma",
                 gender: "m",
                 birthDate: "1989-10-10",
+                lastContact: "2017-03-18T12:20:06.702Z"
             });
             customer.save((err, customer) => {
                 chai.request(server)
@@ -111,6 +112,7 @@ describe('Customers', () => {
                 lastName: "Rhouma",
                 gender: "m",
                 birthDate: "1989-10-10",
+                lastContact: "2017-03-18T12:20:06.702Z"
             });
             customer.save((err, customer) => {
                 chai.request(server)
@@ -141,6 +143,7 @@ describe('Customers', () => {
                 lastName: "Rhouma",
                 gender: "w",
                 birthDate: "2017-07-27",
+                lastContact: "2017-03-18T12:20:06.702Z"
             });
             customer.save((err, customer) => {
                 chai.request(server)
