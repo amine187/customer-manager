@@ -1,9 +1,10 @@
 # Customers Manager
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.1. [![Build Status](https://travis-ci.com/amine187/customer-manager.svg?branch=master)](https://travis-ci.com/amine187/customer-manager)
+[![Known Vulnerabilities](https://snyk.io/test/github/amine187/customer-manager/badge.svg?targetFile=package.json)](https://snyk.io/test/github/amine187/customer-manager?targetFile=package.json)
 ![GitHub package version](https://img.shields.io/github/package-json/v/badges/shields.svg)
 ![npm type definitions](https://img.shields.io/npm/types/chalk.svg)
-[![Known Vulnerabilities](https://snyk.io/test/github/amine187/customer-manager/badge.svg?targetFile=package.json)](https://snyk.io/test/github/amine187/customer-manager?targetFile=package.json)
+
 
 ## Development server
 
