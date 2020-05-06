@@ -9,7 +9,9 @@
     "test:ui": "ng test",
     "test:api": "NODE_ENV=test mocha --timeout=10000 -- ./api/test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "private": true,
   "dependencies": {
@@ -36,7 +38,8 @@
     "ngx-toastr": "^9.0.2",
     "rxjs": "~6.2.0",
     "winston": "^3.1.0",
-    "zone.js": "~0.8.26"
+    "zone.js": "~0.8.26",
+    "snyk": "^1.319.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.8.0",
@@ -61,5 +64,6 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
     "typescript": "~2.9.2"
-  }
+  },
+  "snyk": true
 }
